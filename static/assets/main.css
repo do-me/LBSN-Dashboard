@@ -1,0 +1,250 @@
+#map {
+  height: 650px;
+  width: 100%;
+}
+
+#geojson-out {
+  z-index: 10;
+}
+
+#spinner:not([hidden]) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#spinner::after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  border: 9px solid #f3f3f3;
+  border-top: 10px solid #f25a41;
+  border-radius: 100%;
+  will-change: transform;
+  animation: spin 1s infinite linear
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hexbin-hexagon {
+  stroke: #000;
+  stroke-width: 1px;
+}
+
+.hexbin-container:hover .hexbin-hexagon {
+  transition: 200ms;
+  stroke: orange;
+  stroke-width: 1px;
+  stroke-opacity: 1;
+}
+
+.hexbin-tooltip {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.color-tile {
+  float: left;
+  width: 14px;
+  height: 14px;
+}
+
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+.legend {
+  text-align: left;
+  line-height: 18px;
+  color: #555;
+  min-width: 50px;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: rgb(104, 129, 166);
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th, .styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #DFE7F0;
+}
+
+.left-top i, .middle-top i, .right-top i{
+  color: rgb(104, 129, 166)
+}
+
+.left-bottom, .middle-bottom, .right-bottom{
+  display: grid;
+  grid-auto-rows: max-content;
+}
+
+
+#textbody button i{
+  margin-right:10px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px 10px;
+  /* grid-template-columns: auto fit-content(100px) auto; */
+  grid-template-rows: auto fit-content(100px) auto;
+}
+
+.gridder {
+  grid-area: 1 / 1 / 3 / 4;
+}
+
+.left-top {
+  grid-area: 1 / 1 / 2 / 2;
+  display: flex;
+}
+
+.middle-top {
+  grid-area: 1 / 2 / 2 / 3;
+  display: flex;
+}
+
+.right-top {
+  grid-area: 1 / 3 / 2 / 4;
+  display: flex;
+}
+
+.left-bottom {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.middle-bottom {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.right-bottom {
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+#textbody button, #term-query-table button {
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: 0.125em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  height: 3.75em;
+  line-height: 3.75em;
+  border-radius: 3.75em;
+  padding: 0 2.5em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  background-color: rgb(104, 129, 166);
+  box-shadow: none;
+  color: #ffffff;
+  margin: 2px;
+  width: fit-content;
+}
+
+#textbody {
+  font-family: Trebuchet MS;
+}
+
+textarea{
+  font-size: 20px;
+  font-family: Trebuchet MS;
+}
+
+
+
+.header-text{
+  font-weight: bold;
+  font-size: 30px;
+  margin-left: 10px
+}
+
+select{
+
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  /* letter-spacing: 0.125em; */
+  /* text-align: center; */
+  /* text-decoration: none; */
+  /* text-transform: uppercase; */
+  /* white-space: nowrap; */
+  /* font-size: 0.75rem; */
+  /* max-width: 20rem; */
+  height: 3.75em;
+  /* line-height: 3.75em; */
+  border-radius: 3.75em;
+  padding: 0 2.5em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  background-color: rgb(104, 129, 166);
+  box-shadow: none;
+  color: #ffffff;
+  margin: 5px;
+}
+
+#FNP_Selector{
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10px;
+}

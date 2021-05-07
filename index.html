@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- load all packages -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../map/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../map/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../map/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../map/favicon/site.webmanifest">
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../map/assets/leaflet/leaflet.css">
+    <script src="../map/assets/leaflet/leaflet.js"></script>
+    <script src="../map/assets/leaflet.ajax.min.js"></script>
+    <link rel="stylesheet" href="../map/assets/geoman/leaflet-geoman.css">
+    <script src="../map/assets/geoman/leaflet-geoman.min.js"></script>
+    <script src="../map/assets/d3.min.js"></script>
+    <script src="../map/assets/jquery.min.js"></script>
+    <link rel="stylesheet" href="../map/assets/leaflet_markercluster/MarkerCluster.css" />
+    <link rel="stylesheet" href="../map/assets/leaflet_markercluster/MarkerCluster.Default.css" />
+    <script src="../map/assets/leaflet_markercluster/leaflet.markercluster-src.js"></script>
+    <script src="../map/assets/leaflet.markercluster.freezable.js"></script>
+    <link rel="stylesheet" href="../map/assets/control_geocoder/Control.Geocoder.css" />
+    <script src="../map/assets/control_geocoder/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="../map/assets/leaflet_measure/Leaflet.PolylineMeasure.css" />
+    <script src="../map/assets/leaflet_measure/Leaflet.PolylineMeasure.js"></script>
+    <script src="../map/assets/leaflet-heat.js"></script>
+    <script src="../map/assets/turf.min.js"></script>
+    <link rel="stylesheet" href="../map/assets/visual_click/L.VisualClick.css" />
+    <script src="../map/assets/visual_click/L.VisualClick.js"></script>
+    <script src="../map/assets/js-hll-1.0.0.min.js"></script>
+    <script src="../map/assets/d3-hexbin.v0.2.min.js"></script>
+    <script src="../map/assets/leaflet-d3.js" charset="utf-8"></script>
+
+    <script src='../map/assets/leaflet_fullscreen/leaflet.fullscreen.min.js'></script>
+    <link href='../map/assets/leaflet_fullscreen/leaflet.fullscreen.css' rel='stylesheet' />
+
+    <!-- load main css and js -->
+    <link rel="stylesheet" href="../map/assets/main.css" />
+    <script src="../map/assets/main.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script> -->
+
+    <link rel="stylesheet" href="../map/assets/font-awesome/css/all.css" />
+    <!-- story template-->
+    <!-- <script src="../map/assets/story/jquery.min.js"></script>
+    <script src="../map/assets/story/jquery.scrollex.min.js"></script>
+    <script src="../map/assets/story/jquery.scrolly.min.js"></script>
+    <script src="../map/assets/story/browser.min.js"></script>
+    <script src="../map/assets/story/breakpoints.min.js"></script>
+    <script src="../map/assets/story/util.js"></script>
+    <script src="../map/assets/story/main.js"></script> -->
+    <!-- <link rel="stylesheet" href="../map/assets/story/story.css" /> -->
+    <!--<script src="../map/assets/d3clouds/d3.min.js"></script> might cause trouble as two different d3 versions are used-->
+    <!-- <script src="../map/assets/d3clouds/cloud.min.js"></script> -->
+
+
+    <!-- story template-->
+
+</head>
+
+<body>
+
+    <div id="map">
+        <div id="spinner"></div>
+    </div>
+
+    <div id="textbody">
+
+
+
+    <br>
+
+    <div id="FNP_Selector" hidden>
+        <label for="FNP">Choose a FNP Layer:</label>
+        <select name="FNP" id="FNP_select"></select>
+        <br>
+    </div>
+
+    <br>
+
+    <div class="grid-container">
+        <div class="gridder"></div>
+
+        <div class="left-top"><i class="fas fa-cog fa-2x"></i><div class="header-text">Options</div></div>
+        <div class="middle-top"><i class="fas fa-layer-group fa-2x"></i><div class="header-text">Layers</div></div>
+        <div class="right-top"><i class="fas fa-lightbulb fa-2x"></i> <div class="header-text">Custom Query</div></div>
+
+        <div class="left-bottom">
+            <button id="reset_map" s><i class="fas fa-redo"></i>Reset Map </button>
+            <button id="cluster_toggle"><i class="fas fa-dot-circle"></i>Toggle Marker Clustering </button>
+            <!-- <button id="flyto"> fly to 50,8 </button> -->
+        </div>
+
+        <div class="middle-bottom">
+            <div><button id="remove_self_drawn"><i class="fas fa-times"></i>Remove Self Drawn Polygons</button>
+            <button id="load_locs"><i class="fas fa-plus-circle"></i>Load Instagram Locations Info</button></div>
+            <div><button id="load_fnp"><i class="fas fa-plus-circle"></i>Load FNP</button>
+            <button id="reset_fnp_colors"><i class="fas fa-redo"></i>Reset FNP Colors</button></div>
+            <div><button id="add_hexbins"><i class="fas fa-plus-circle"></i>Add Hexbins</button>
+            <button id="remove_hexbins"><i class="fas fa-times"></i>Remove Hexbins</button></div>
+
+        </div>
+
+        <div class="right-bottom">
+            <!-- <label for="custom_query">Custom query</label>
+            <br> -->
+            <textarea id="custom_query" name="custom_query" rows="3" cols="30"
+                placeholder="Query posts containing certain keywords such as 'nature' or 'politics' ">nature, green, tree, natur, grün, baum</textarea>
+            <button id="submit_query"><i class="fas fa-plus-circle"></i>Submit</button>
+            <button id="remove_query"><i class="fas fa-times"></i>Remove previous query layers </button>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+
+</html>

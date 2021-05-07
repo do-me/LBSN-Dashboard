@@ -1,0 +1,11 @@
+pydantic==1.7.3
+pandas==1.1.4
+uvicorn==0.13.1
+numpy==1.19.4
+Shapely==1.7.1
+lbsnstructure==0.5.1
+starlette==0.13.6
+psycopg2==2.8.6
+fastapi==0.64.0
+lbsntransform==0.18.3
+secrets==1.0.2
