@@ -4,6 +4,9 @@ static/data/
 # 1. custom geojsons for analysis, such as land-use plans (here German nomenclature "FNP" or "Flächennutzungsplan"
 # 2. Instagram locations
 
+# jupyter notebooks for testing
+*.ipynb
+
 # GitHub Python gitgnore template 
 
 # Byte-compiled / optimized / DLL files
