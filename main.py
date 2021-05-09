@@ -125,7 +125,7 @@ async def hll_locs_filter(q: str = None):
     return df.to_csv(index=False, line_terminator="\n")
 
 # hll union stats, users, posts, userdays, location ids
-# due to poor postgis handling cannot accept feature group and needs single geometries, here separated by pipe |
+# this method is only for hand-drawn polygons! 
 @app.get("/hll_union/{q}")  # , response_class=HTMLResponse)
 async def hll_union(q: str = None):
     #q = "%7B%22type%22%3A%22Polygon%22%2C%22coordinates%22%3A%5B%5B%5B6.896667%2C50.673835%5D%2C%5B6.896667%2C50.713852%5D%2C%5B7.341614%2C50.713852%5D%2C%5B7.341614%2C50.673835%5D%2C%5B6.896667%2C50.673835%5D%5D%5D%7D"
@@ -178,6 +178,53 @@ async def hll_union(q: str = None):
     # return df.to_csv(index=False, line_terminator="\n")
     cur.execute(db_query)
     return cur.fetchall()[0]
+
+# method only for geojson features - still to improve with POST request as "Grünfläche" of FNP has too many features -> request too long for server!
+@app.get("/hll_query_geojson_features/{q}")  # , response_class=HTMLResponse)
+async def hll_query_geojson_features(q: str = None):
+    #q = "%7B%22type%22%3A%22Polygon%22%2C%22coordinates%22%3A%5B%5B%5B6.896667%2C50.673835%5D%2C%5B6.896667%2C50.713852%5D%2C%5B7.341614%2C50.713852%5D%2C%5B7.341614%2C50.673835%5D%2C%5B6.896667%2C50.673835%5D%5D%5D%7D"
+    #q = http://localhost:8000/hll_union/{"type":"Polygon","coordinates":[[[7.020582,50.729498],[7.020582,50.738915],[7.225525,50.738915],[7.225525,50.729498],[7.020582,50.729498]]]}|{"type":"Polygon","coordinates":[[[7.129739,50.70613],[7.129739,50.709664],[7.178648,50.709664],[7.178648,50.70613],[7.129739,50.70613]]]}
+
+    polygon_arr = q.split("|") # every polygon comes separated by |
+
+    def polysql(polystring):
+        return " ST_SetSRID(ST_GeomFromGeoJSON('" + polystring + "'), 4326),".replace("\n","").replace("\\","")
+    s = ""   
+    for i in polygon_arr[:-1]:
+        s += polysql(i)
+    s += polysql(polygon_arr[-1])[:-1] # last one without comma
+
+    db_query = f"""
+SELECT 
+  hll_cardinality(
+    hll_union_agg(user_hll)
+  ):: int as "users", 
+  hll_cardinality(
+    hll_union_agg(post_hll)
+  ):: int as "posts", 
+  hll_cardinality(
+    hll_union_agg(date_hll)
+  ):: int as "userdays", 
+  string_agg(t1.place_guid :: text, '; '), 
+  hll_union_agg(user_hll):: text as user_hll, 
+  hll_union_agg(post_hll):: text as post_hll, 
+  hll_union_agg(date_hll):: text as date_hll 
+FROM 
+  spatial.place t1 
+        WHERE  {sql_exclude_conditions_geom} 
+  AND (
+    ST_Intersects(
+      t1.geom_center, 
+      ST_Union(
+        ARRAY[{s}])))
+        """
+    # doesnt need pandas! 
+    # df = pd.read_sql_query(db_query, db_connection)
+    # return df.to_csv(index=False, line_terminator="\n")
+    #print(db_query)
+    cur.execute(db_query)
+    return cur.fetchall()[0]
+
 
 
 @app.get("/custom_query/{q}")  # , response_class=HTMLResponse)

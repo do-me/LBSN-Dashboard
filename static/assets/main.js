@@ -256,8 +256,10 @@ $(document).ready(function () {
         // multiple polygons concat with pipe |
         var poly_helper = in_features.toGeoJSON().features.map((a, i) => `${JSON.stringify(a.geometry)}`).join('|'); // join by pipe
 
-        // route for request
-        $.get("http://localhost:8000/hll_union/" + poly_helper).done(function (data) {
+        // route for request: hll_query_geojson_features for geojson selection only, hll_union for self drawn geometries
+        var this_route = (selection_layer === true) ? 'hll_query_geojson_features/' :'hll_union/';
+
+        $.get("http://localhost:8000/"+ this_route + poly_helper).done(function (data) {
 
             // displaying tooltip metrics on click
             var tooltip_text =
