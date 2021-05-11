@@ -9,3 +9,5 @@ psycopg2==2.8.6
 fastapi==0.64.0
 lbsntransform==0.18.3
 secrets==1.0.2
+pyOpenSSL==20.0.1
+aiofiles==0.6.0
