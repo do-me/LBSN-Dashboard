@@ -1,5 +1,5 @@
 # LBSN-Dashboard
-A location-based social network dashboard for privacy-aware analysis based on [LBSN structure](https://lbsn.vgiscience.org/), a Docker-based Postgres HyperLogLog implementation from Dunkel, Löchner, Krumpe et al. for LBSN analysis.
+A location-based social network dashboard for privacy-aware analysis based on [LBSN structure](https://lbsn.vgiscience.org/), a Docker-based Postgres HyperLogLog implementation from Dunkel, Löchner, Krumpe et al. for LBSN analysis. Developed for my [Master's thesis](https://github.com/do-me/LBSN-Thesis).
 
 ![image](https://user-images.githubusercontent.com/47481567/120980725-2faf8600-c777-11eb-9fe9-71ec16272f71.png)
 
