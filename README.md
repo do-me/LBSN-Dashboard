@@ -1,6 +1,8 @@
 # LBSN-Dashboard
 [![DOI](https://zenodo.org/badge/365174752.svg)](https://zenodo.org/badge/latestdoi/365174752)
 
+Find the supplementary repo [here](https://github.com/do-me/LBSN-Thesis) or watch the [videos](https://github.com/do-me/LBSN-Thesis/tree/main/videos)!
+
 A location-based social network dashboard for privacy-aware analysis based on [LBSN structure](https://lbsn.vgiscience.org/), a Docker-based Postgres HyperLogLog implementation from Dunkel, Löchner, Krumpe et al. for LBSN analysis. Developed for my [Master's thesis](https://github.com/do-me/LBSN-Thesis).
 
 ![image](https://user-images.githubusercontent.com/47481567/120980725-2faf8600-c777-11eb-9fe9-71ec16272f71.png)
