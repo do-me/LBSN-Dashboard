@@ -832,6 +832,18 @@ $(document).ready(function () {
         return filtered_points
     }
 
+     // fix for hexbin layer control
+        L.HexbinLayer.prototype.onRemove = function(map) {
+        L.SVG.prototype.onRemove.call(this);
+        // Destroy the svg container
+        this._destroyContainer();
+        // Remove events
+        map.off({ 'moveend': this.redraw }, this);
+        this._map = null;
+        // Explicitly will leave the data array alone in case the layer will be shown again
+        //this._data = [];
+        d3.select(this._container).remove();
+      };
 
     load_json()
     add_hll_data()
