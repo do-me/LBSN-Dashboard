@@ -55,7 +55,7 @@ app.mount("/map", StaticFiles(directory="static", html=True), name="static")
 # for security reasons, index.html shouldnt be mounted and be transfered to
 # a different directory (like root)
 
-# security
+# credentials
 def get_current_username(credentials: HTTPBasicCredentials = Depends(security)):
     correct_username = secrets.compare_digest(credentials.username, "admin")
     correct_password = secrets.compare_digest(credentials.password, "12345")
@@ -278,19 +278,19 @@ async def term_stats(q: str = None):
     cur.execute(db_query)
     return cur.fetchall()[0]
 
-# direct queries
-@app.get("/q/{q}")
-async def read_item(q: str = None):
-    try:
-        cur.execute("{}".format(q))  # doesnt need semicolon
-    except Exception:
-        db_connection.rollback()
-        return rows  # read only doesnt need commit
-    rows = cur.fetchall()  # rows = [i[0] for i in rows]
-    return rows
+# direct queries DO NOT USE IN PRODUCTION, just for testing
+# @app.get("/q/{q}")
+# async def read_item(q: str = None):
+#    try:
+#        cur.execute("{}".format(q))  # doesnt need semicolon
+#    except Exception:
+#        db_connection.rollback()
+#        return rows  # read only doesnt need commit
+#    rows = cur.fetchall()  # rows = [i[0] for i in rows]
+#    return rows
 
 # fetch and parse in js with
-#fetch('../q/select * from spatial.place limit 10')
+# fetch('../q/select * from spatial.place limit 10')
 #    .then(response=> response.json())
 #    .then(function(text) {
 #    e=text
