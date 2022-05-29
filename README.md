@@ -11,7 +11,8 @@ A location-based social network dashboard for privacy-aware analysis based on [L
 - [Bonn, NRW, Germany](https://geo.rocks/dashboards/bonn)
 - [Waynesboro, VA, USA](https://geo.rocks/dashboards/waynesboro)
 
-![image](https://user-images.githubusercontent.com/47481567/120980725-2faf8600-c777-11eb-9fe9-71ec16272f71.png)
+![Screenshot 2022-05-29 115959](https://user-images.githubusercontent.com/47481567/170873604-4701951b-f37e-491c-b225-f69cf4717931.png)
+
 
 ## Content 
 - Backend consisting of Python web framework (fastapi) excluding docker containers from [LBSN structure](https://lbsn.vgiscience.org/)
