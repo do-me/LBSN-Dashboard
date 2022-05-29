@@ -11,7 +11,7 @@ A location-based social network dashboard for privacy-aware analysis based on [L
 - [Bonn, NRW, Germany](https://geo.rocks/dashboards/bonn)
 - [Waynesboro, VA, USA](https://geo.rocks/dashboards/waynesboro)
 
-![Screenshot 2022-05-29 115959](https://user-images.githubusercontent.com/47481567/170873604-4701951b-f37e-491c-b225-f69cf4717931.png)
+![LBSN-Dashboard](https://user-images.githubusercontent.com/47481567/170873604-4701951b-f37e-491c-b225-f69cf4717931.png)
 
 
 ## Content 
