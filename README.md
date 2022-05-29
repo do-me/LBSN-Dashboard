@@ -3,7 +3,7 @@
 
 Find the supplementary repo [here](https://github.com/do-me/LBSN-Thesis) or watch the [videos](https://github.com/do-me/LBSN-Thesis/tree/main/videos)!
 
-A location-based social network dashboard for privacy-aware analysis based on [LBSN structure](https://lbsn.vgiscience.org/), a Docker-based Postgres HyperLogLog implementation from Dunkel, Löchner, Krumpe et al. for LBSN analysis. Developed for my [Master's thesis](https://github.com/do-me/LBSN-Thesis).
+A location-based social network dashboard for privacy-aware analysis based on [LBSN structure](https://lbsn.vgiscience.org/), a Docker-based Postgres HyperLogLog implementation from Dunkel, Löchner, Krumpe et al. for LBSN analysis. More info [here](https://github.com/do-me/LBSN-Thesis).
 
 **Disclaimer: This is a prototype for research purposes and not thought for production (subject to SQL-injection)!**
 
@@ -15,7 +15,7 @@ A location-based social network dashboard for privacy-aware analysis based on [L
 
 ## Content 
 - Backend consisting of Python web framework (fastapi) excluding docker containers from [LBSN structure](https://lbsn.vgiscience.org/)
-- Frontend ready-to-deploy with plugin options
+- Frontend based on Leaflet and Geoman ready-to-deploy with plugin options (e.g. GeoJSON)
 
 ## Data
 Use my [Fast-Instagram-Scraper](https://github.com/do-me/fast-instagram-scraper) to retrieve Data e.g. from Instagram. It's fast, easy to use and quickly read into the privacy-aware DB. 
@@ -38,9 +38,4 @@ lbsntransform --origin 13 --input_path_url "path/to/data/fast-instagram-scraper/
 8. Go to localhost:8000 
 
 ## Contact 
-This repository is part of my Master's thesis. For any questions contact [me](mailto:dominik@geo.rocks) or find me on [my blog](geo.rocks).
-
----
-
-## Handy Misc
-- I used [pipreqs](https://github.com/bndr/pipreqs) to export just the packages to requirements.txt that are actually used in a project. Comes in handy when working in global env what you should't do.
+For any questions contact [me](mailto:dominik@geo.rocks) or find me on [my blog](geo.rocks).
